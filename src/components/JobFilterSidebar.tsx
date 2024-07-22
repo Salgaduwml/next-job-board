@@ -29,7 +29,7 @@ async function filterJobs(formData: FormData) {
 }
 
 const JobFilterSidebar = async ({ defaultValues }: JobFilterSidebarProps) => {
-  const distinctLocations = await prisma.job
+  const distinctLocations = (await prisma.job
     .findMany({
       where: { approved: true },
       select: { location: true },
@@ -37,7 +37,7 @@ const JobFilterSidebar = async ({ defaultValues }: JobFilterSidebarProps) => {
     })
     .then((locations) =>
       locations.map(({ location }) => location).filter(Boolean),
-    );
+    )) as string[];
   return (
     <aside className="sticky top-0 h-fit rounded-lg border bg-background p-4 md:w-[260px]">
       <form action={filterJobs} key={JSON.stringify(defaultValues)}>
