@@ -1,7 +1,7 @@
 import JobListItem from "@/components/JobListItem";
 import H1 from "@/components/ui/h1";
 import prisma from "@/lib/prisma";
-import { Link } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 const Page = async () => {
